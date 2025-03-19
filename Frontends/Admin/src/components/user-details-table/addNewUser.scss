@@ -1,0 +1,58 @@
+/* Dialog Title */
+.dialog-title {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+    padding-bottom: 10px;
+  }
+  
+  /* Input Fields */
+  .text-field {
+    background: #f8f9fa;
+    border-radius: 5px;
+  }
+  
+  .text-field label {
+    font-weight: bold;
+  }
+  
+  .text-field input {
+    padding: 10px;
+  }
+  
+  /* Button Container */
+  .dialog-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+  }
+  
+  /* Cancel Button */
+  .cancel-btn {
+    background-color: #f44336 !important;
+    color: white !important;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 8px 16px;
+    transition: 0.3s;
+  }
+  
+  .cancel-btn:hover {
+    background-color: #d32f2f !important;
+  }
+  
+  /* Save Button */
+  .save-btn {
+    background-color: #4caf50 !important;
+    color: white !important;
+    font-weight: bold;
+    border-radius: 8px;
+    padding: 8px 16px;
+    transition: 0.3s;
+  }
+  
+  .save-btn:hover {
+    background-color: #388e3c !important;
+  }
+  

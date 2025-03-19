@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./userTable.scss";
 import Profile from "../../assets/images/profile.png";
+import AddNewUser from '../../components/user-details-table/addNewUser'
 import {
   Box,
   Typography,
@@ -18,15 +19,16 @@ const UserTable = () => {
   const [users, setUsers] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [idCardImage, setIdCardImage] = useState(null);
+  const [open, setOpen] = useState(false);
 
   // Fetch users from the backend
   useEffect(() => {
     const fetchUsers = async () => {
       try {
         const response = await axios.get("http://localhost:5000/user", {
-          withCredentials: true, // Ensure cookies (JWT) are sent
+          withCredentials: true, 
         });
-        setUsers(response.data); // Set the users in the state
+        setUsers(response.data); 
       } catch (error) {
         console.error("Error fetching users:", error);
       }
@@ -35,29 +37,29 @@ const UserTable = () => {
     fetchUsers();
   }, []);
 
-  // Function to fetch the ID card image and open the modal
+
   const handleViewIdCard = async (userId) => {
     setOpenModal(true);
-    console.log("View ID Card clicked for user:", userId); // Debugging
+    console.log("View ID Card clicked for user:", userId); 
   
     try {
       const response = await axios.get(
-        `http://localhost:5000/user/${userId}/idcard`, // API endpoint for ID card
+        `http://localhost:5000/user/${userId}/idcard`, 
         {
-          responseType: "arraybuffer", // Important for binary image data
+          responseType: "arraybuffer", 
         }
       );
   
-      // Convert the binary data to base64 string
+      
       const base64Image = arrayBufferToBase64(response.data);
   
-      setIdCardImage(base64Image); // Set the image data for rendering
+      setIdCardImage(base64Image); 
     } catch (error) {
       console.error("Error fetching ID card:", error);
     }
   };
   
-  // Convert ArrayBuffer to Base64
+  
   const arrayBufferToBase64 = (buffer) => {
     let binary = '';
     const bytes = new Uint8Array(buffer);
@@ -65,21 +67,30 @@ const UserTable = () => {
     for (let i = 0; i < length; i++) {
       binary += String.fromCharCode(bytes[i]);
     }
-    return window.btoa(binary); // Convert binary string to base64
+    return window.btoa(binary); 
   };
 
-  // Close modal
   const handleCloseModal = () => {
     setOpenModal(false);
-    setIdCardImage(null); // Clear the image data
+    setIdCardImage(null); 
   };
+
+  const openUserForm = () => {
+    setOpen(true)
+  }
+
+ 
 
   return (
     <Box>
       <Box className="users-head">
-        <Typography>All Users</Typography>
+        <Typography>All Users ({users.length})</Typography>
+        <Box className="user-add">
         <Typography>A-Z</Typography>
+        <Button className="add-user-button" onClick={openUserForm}>+ Add User</Button>
+        </Box>
       </Box>
+      <AddNewUser open={open} setOpen={setOpen}/>
       <div className="table-container">
         <table className="responsive-table">
           <thead>
@@ -118,7 +129,7 @@ const UserTable = () => {
                   </Typography>
                 </td>
                 <td>
-                  <Typography className="role-field">{user.role}</Typography>
+                  <Button className="role-field">{user.role}</Button>
                 </td>
                 <td>
                   <Typography className="date-field">

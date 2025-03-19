@@ -14,6 +14,15 @@
   overflow: hidden;
   background-color: rgb(255, 255, 255); /* Red Table Background */
 }
+.user-add{
+  display: flex;
+  gap: 10px;
+}
+.add-user-button{
+  background-color: #3e2723 !important;
+  color: white !important;
+  padding: 5px 25px !important;
+}
 
 /* Table Header */
 .tab-hed {
@@ -78,8 +87,18 @@
   color: #64748B;
 }
 
-.date-field,
+
 .role-field {
+  font-family: "Inter";
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: none !important;
+  background-color: rgb(251, 200, 238) !important;
+  color: #C11574 !important;
+  border-radius: 16px !important;
+  padding: 0px 0px !important;
+}
+.date-field{
   font-family: "Inter";
   font-weight: 600;
   font-size: 14px;
