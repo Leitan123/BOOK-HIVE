@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import { FaAnglesUp } from "react-icons/fa6";
-import { IoChatboxEllipses } from "react-icons/io5";
 import { IoIosNotifications } from "react-icons/io";
+import { IoChatboxEllipses } from "react-icons/io5";
 
 export default function Footer() {
   const [isDonationHovered, setIsDonationHovered] = useState(true);
@@ -45,8 +45,78 @@ export default function Footer() {
   return (
     <div className="relative">
       <footer className="p-8 bg-black bg-opacity-90 backdrop-blur-md shadow-xl text-white">
-        {/* Existing footer content remains the same */}
-        {/* ... */}
+        <div className="container mx-auto flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0">
+          <div className="text-3xl font-extrabold text-center md:text-left">
+            <span className="text-[#edbf6d]">Your Company</span>
+          </div>
+          <div className="text-white flex flex-col items-center md:items-start space-y-2">
+            <Link
+              to="/about"
+              className="text-lg hover:text-[#edbf6d] transition duration-300"
+            >
+              About Us
+            </Link>
+            <Link
+              to="/contact"
+              className="text-lg hover:text-[#edbf6d] transition duration-300"
+            >
+              Contact
+            </Link>
+            <Link
+              to="/privacy"
+              className="text-lg hover:text-[#edbf6d] transition duration-300"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              to="/terms"
+              className="text-lg hover:text-[#edbf6d] transition duration-300"
+            >
+              Terms of Service
+            </Link>
+          </div>
+          <div className="flex space-x-6 text-white mt-4 md:mt-0">
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#3b5998] text-2xl transition duration-300"
+            >
+              <i className="fab fa-facebook"></i>
+            </a>
+            <a
+              href="https://twitter.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#1da1f2] text-2xl transition duration-300"
+            >
+              <i className="fab fa-twitter"></i>
+            </a>
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#e1306c] text-2xl transition duration-300"
+            >
+              <i className="fab fa-instagram"></i>
+            </a>
+          </div>
+          <div className="text-white mb-4 md:mb-0 flex justify-center md:justify-end w-full md:w-auto">
+            <div className="h-[350px] overflow-hidden">
+              <Calendar
+                className="rounded-lg shadow-xl bg-[#2d2d2d] p-4"
+                tileClassName={({ date, view }) =>
+                  view === "month" &&
+                  date.toDateString() === new Date().toDateString()
+                    ? "bg-blue-500 text-white font-bold"
+                    : ""
+                }
+                prev2Label={null}
+                next2Label={null}
+              />
+            </div>
+          </div>
+        </div>
       </footer>
 
       {/* Top Left Bubble */}
