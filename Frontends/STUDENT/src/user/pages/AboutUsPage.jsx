@@ -94,7 +94,7 @@ export default function AboutPage() {
               </div>
               <div className="lg:w-1/2">
                 <img 
-                  src="/api/placeholder/600/400" 
+                  src= "/images/book-shelf.jpg"
                   alt="Students in library" 
                   className="rounded-lg shadow-md w-full"
                 />
